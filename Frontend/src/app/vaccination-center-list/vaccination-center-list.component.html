@@ -1,0 +1,15 @@
+<h2>Liste des centres de vaccination</h2>
+<li *ngFor="let aCenter of centers"
+    [ngClass]="selected==aCenter ? 'selected' : ''">
+    
+    <button
+        [ngStyle]="{'font-weight' : isSpecialCenter(aCenter)}" >
+        {{aCenter.name}}
+    </button>  
+
+</li>
+
+<div *ngIf="selected">
+    Centre sélectionné : {{selected.name}}
+    <h3>{{selected.address}}, {{selected.city}}</h3>
+</div>
