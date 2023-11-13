@@ -8,4 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface VaccinationCenterRepository 
     extends JpaRepository<VaccinationCenter, Integer> {
         public List<VaccinationCenter> findAllByCity(String city);
+        public List<VaccinationCenter> findAllByName(String name);
+        public List<VaccinationCenter> findAllById(int id);
 }
+

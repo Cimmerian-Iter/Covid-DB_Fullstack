@@ -9,7 +9,12 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate.ddl-auto: create
-
+  security:
+    user:
+      name: Admin
+      password: Administrateur
+    basic:
+      enabled: true
 logging:
   level:
     org:

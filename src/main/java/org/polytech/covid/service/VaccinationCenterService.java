@@ -19,8 +19,12 @@ public class VaccinationCenterService {
         return centerRepository.findAllByCity(CityName);
     }
 
-    public List<VaccinationCenter> findAll(){
-        return centerRepository.findAll();
+    public List<VaccinationCenter> findAllByName(String CenterName){
+        return centerRepository.findAllByName(CenterName);
+    }
+
+        public List<VaccinationCenter> findAllById(int CenterId){
+        return centerRepository.findAllById(CenterId);
     }
     
 }
