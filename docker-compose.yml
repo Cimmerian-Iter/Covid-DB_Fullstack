@@ -17,6 +17,11 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: covid
+      POSTGRES_PASSWORD: database_password
     ports:
       - "5433:5432"
+
+networks:
+  default:
+    name: covid-db-network
+    driver: bridge
