@@ -33,3 +33,12 @@ Et le docker marchait, et nous voyons passer les requètes dans les logs dockers
 ![image](https://github.com/Cimmerian-Iter/Covid-DB_Fullstack/assets/37327589/3443d7db-297e-4055-a798-e6cba5c092cd)
 
 
+
+
+Nous avons essayer l'image postgres normal, ou bien encore la postgres:alpine3.18 en lui fournissant une archive de la base de donnée qu'elle importait dans /var/lib/postgresql/data.
+
+Cependant aucune de ces deux solutions ne parviennent à changer l'issue de cette erreur.
+
+Il se peut qu'il s'agisse d'un problème interne a mon ordinateur étant donné que ce code tel quel à pu marcher une fois.
+
+
