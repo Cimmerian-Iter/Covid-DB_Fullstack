@@ -1,5 +1,7 @@
 # Covid-DB_Fullstack
 
+Ce travail a été réaliser dans la branche ```test``` et ```docker```, ```main``` étant une première tentative afin de réaliser l'adoption de docker.
+
 Telechargez l'archive git avec cette commande
 
 ```git clone -b docker https://github.com/Cimmerian-Iter/Covid-DB_Fullstack.git```
@@ -41,4 +43,4 @@ Cependant aucune de ces deux solutions ne parviennent à changer l'issue de cett
 
 Il se peut qu'il s'agisse d'un problème interne a mon ordinateur étant donné que ce code tel quel à pu marcher une fois.
 
-
+Deux structures de docker-compose.yaml ont été testé, celle de la branche main, et celle des branche test et docker. 
