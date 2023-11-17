@@ -30,5 +30,6 @@ Cette erreur est d'autant plus incompréhensible que nous avons correctement nom
 
 Et le docker marchait, et nous voyons passer les requètes dans les logs dockers.
 
-![alt text]([http://url/to/img.png](https://media.discordapp.net/attachments/912362265280380948/1175119069456896071/image.png?ex=656a11ea&is=65579cea&hm=f57dd028777550e189c02f837be5e342c29b38d6b2a44f4b055665eaaf1db96c&=&width=1408&height=1060)https://media.discordapp.net/attachments/912362265280380948/1175119069456896071/image.png?ex=656a11ea&is=65579cea&hm=f57dd028777550e189c02f837be5e342c29b38d6b2a44f4b055665eaaf1db96c&=&width=1408&height=1060)
+![image](https://github.com/Cimmerian-Iter/Covid-DB_Fullstack/assets/37327589/3443d7db-297e-4055-a798-e6cba5c092cd)
+
 
