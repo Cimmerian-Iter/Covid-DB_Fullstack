@@ -10,18 +10,18 @@ mettez vous dans le repertoire
 
 Lancez ```docker build``` puis ```docker compose up```
 
-#Jenkins
+# Jenkins
 Pour pouvoir utiliser jenkins, il faut d'abord avoir jenkins-compose disponible ici : ```git clone https://github.com/jredel/jenkins-compose```
 
 Lancer ```cd jenkins-compose``` puis ```docker compose up```
 
 Se connecter sur le site puis fournir le Jenkins file afin de pouvoir génerer la pipeline.
 
-#Test
+# Test
 
 Ce repo possède un test.http, qui est un exemple de requete. Pour communiquer avec le serveur, pour l'instant il est possible de verifier l'authentification. En lançant la requète http, on doit avoir un code http 200. En enlevant la ligne Authorization, vous devirez recevoir un code HTTP 401.
 
-#Erreur
+# Erreur
 Malheureusement, Nous avons essuyé beaucoup de problème avec la connexion entre la base de donnée et le backend. Pour des raisons dont on ignore.
 
 Le commit final de cette branche à bien fonctionné, mais en relançant encore une fois sous un autre environnement le projet ne marche plus avec cette erreur : covid-db_fullstack-jdk-1  | org.postgresql.util.PSQLException: Connection to db:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
