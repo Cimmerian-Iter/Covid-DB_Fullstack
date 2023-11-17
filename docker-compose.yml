@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  covid-db:
+    container_name: covid-db
+    image: covid-db-fullstack
+    ports:
+      - 8080:8080
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres-db
+  postgres-db:
+    container_name: 'postgres-db'
+    image: postgres:alpine3.18
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: database_password
+    ports:
+      - "5433:5432"
+
+networks:
+  default:
+    name: covid-db-network
+    driver: bridge
