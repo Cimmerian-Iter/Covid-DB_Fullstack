@@ -6,9 +6,17 @@ services:
       dockerfile: dockerfile
     depends_on:
       - db
+    links:
+      - db
     ports:
       - "8080:8080"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U db -d db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   db:
+    hostname: db
     image: postgres:alpine3.18
     restart: always
     environment:
@@ -19,6 +27,11 @@ services:
       - "5432:5432"
     volumes:
     - ./pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U db -d db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 networks:
   default:
     driver: bridge
