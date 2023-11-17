@@ -4,7 +4,7 @@ spring:
   datasource:
     url : jdbc:postgresql://db:5432/covid-db
     username: postgres
-    password: kanehuri//974
+    password: password
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
