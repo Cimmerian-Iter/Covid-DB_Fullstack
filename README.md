@@ -1,4 +1,5 @@
 # Covid-DB_Fullstack
+Lien vers la partie frontend du projet : https://github.com/numaquentin/Covid-Fullstack-Frontend
 
 Ce travail a été réaliser dans la branche ```test``` et ```docker```, ```main``` étant une première tentative afin de réaliser l'adoption de docker.
 
