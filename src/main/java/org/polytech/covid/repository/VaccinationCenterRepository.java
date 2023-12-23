@@ -10,5 +10,7 @@ public interface VaccinationCenterRepository
         public List<VaccinationCenter> findAllByCity(String city);
         public List<VaccinationCenter> findAllByName(String name);
         public List<VaccinationCenter> findAllById(int id);
+        public VaccinationCenter save(VaccinationCenter center);
 }
+
 

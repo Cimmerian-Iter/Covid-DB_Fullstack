@@ -1,0 +1,11 @@
+@name=Add Vaccination Center
+
+POST http://localhost:8080/api/centers/add
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+"address": "63 rue des potiers",
+"city": "TAMERE",
+"name": "Dupond"
+}
