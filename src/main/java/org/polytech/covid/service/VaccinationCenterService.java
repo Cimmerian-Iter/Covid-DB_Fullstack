@@ -26,7 +26,14 @@ public class VaccinationCenterService {
         return centerRepository.findAllById(CenterId);
     }
     public VaccinationCenter addCenter(VaccinationCenter center){
-        // You can add validation or business logic here before saving
         return centerRepository.save(center);
+    }
+    public void deleteByName(String name) {
+    }
+    public boolean existsByName(String name) {
+        return centerRepository.existsByName(name);
+    }
+    public void deleteById(int id) {
+        // Implement the logic to delete a center by ID
     }
 }

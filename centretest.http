@@ -6,6 +6,6 @@ Content-Type: application/json
 
 {
 "address": "63 rue des potiers",
-"city": "TAMERE",
+"city": "Nancy",
 "name": "Dupond"
 }

@@ -11,6 +11,8 @@ public interface VaccinationCenterRepository
         public List<VaccinationCenter> findAllByName(String name);
         public List<VaccinationCenter> findAllById(int id);
         public VaccinationCenter save(VaccinationCenter center);
+        boolean existsByName(String name);
+        void deleteByName(String name);
 }
 
 

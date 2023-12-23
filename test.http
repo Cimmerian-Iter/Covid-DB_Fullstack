@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/centers/city/Nancy
+GET http://localhost:8080/api/centers/deleteByName/Dupond
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 Accept: application/json
 
