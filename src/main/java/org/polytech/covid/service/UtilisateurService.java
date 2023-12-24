@@ -3,6 +3,8 @@ package org.polytech.covid.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.polytech.covid.entity.Utilisateur;
+import org.polytech.covid.repository.UtilisateurRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.User;
@@ -13,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
-import org.polytech.covid.entity.Utilisateur;
-import org.polytech.covid.repository.UtilisateurRepository;
 
 @Service
 public class UtilisateurService implements UserDetailsService {
@@ -53,5 +53,10 @@ public class UtilisateurService implements UserDetailsService {
             throw new UsernameNotFoundException("L'utilisateur" + login + " n'existe pas");
         }
 
+    }
+    public Utilisateur createUser(Utilisateur utilisateur) {
+        utilisateur.setLogin(utilisateur.getLogin());
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        return utilisateurRepository.save(utilisateur);
     }
 }
