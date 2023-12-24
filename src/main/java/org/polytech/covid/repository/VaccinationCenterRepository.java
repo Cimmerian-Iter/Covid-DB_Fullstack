@@ -13,6 +13,7 @@ public interface VaccinationCenterRepository
         public VaccinationCenter save(VaccinationCenter center);
         boolean existsByName(String name);
         void deleteByName(String name);
+        void deleteCenterById(Integer id);
 }
 
 

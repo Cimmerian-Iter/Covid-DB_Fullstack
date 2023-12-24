@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/centers/deleteByName/Dupond
+DELETE http://localhost:8080/api/center/deletion/1
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 Accept: application/json
 

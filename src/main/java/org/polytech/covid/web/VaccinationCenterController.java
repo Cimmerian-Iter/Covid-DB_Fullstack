@@ -2,6 +2,7 @@ package org.polytech.covid.web;
 import java.util.List;
 
 import org.polytech.covid.domain.VaccinationCenter;
+import org.polytech.covid.service.CenterNotFoundException;
 import org.polytech.covid.service.VaccinationCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,25 +52,14 @@ public class VaccinationCenterController {
     public void setCenterService(VaccinationCenterService centerService) {
         CenterService = centerService;
     }
-    @DeleteMapping(path = "api/centers/delete/{id}")
-    public ResponseEntity<String> deleteCenterById(@PathVariable int id) {
-        // Check if the center with the specified ID exists
-        if (CenterService.existsById(id)) {
-            CenterService.deleteById(id);
-            return ResponseEntity.ok("Vaccination Center with ID " + id + " deleted successfully.");
-        } else {
+        @DeleteMapping("api/center/deletion/{id}")
+    public ResponseEntity<String> deleteCenter(@PathVariable Integer id) {
+        System.out.println("Inside deleteCenterById Controller");
+        try {
+            CenterService.deleteCenterById(id);
+        return ResponseEntity.ok("Vaccination Center with ID " + id + " deleted successfully.");
+    }   catch (CenterNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaccination Center with ID " + id + " not found.");
-        }
     }
-
-    @DeleteMapping(path = "api/centers/deleteByName/{name}")
-    public ResponseEntity<String> deleteCenterByName(@PathVariable String name) {
-        // Check if the center with the specified name exists
-        if (CenterService.existsByName(name)) {
-            CenterService.deleteByName(name);
-            return ResponseEntity.ok("Vaccination Center with name " + name + " deleted successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vaccination Center with name " + name + " not found.");
-        }
-    }
+}
 }

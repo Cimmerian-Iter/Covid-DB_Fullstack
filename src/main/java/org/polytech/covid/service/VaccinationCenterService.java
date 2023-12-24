@@ -1,6 +1,7 @@
 package org.polytech.covid.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.polytech.covid.domain.VaccinationCenter;
 import org.polytech.covid.repository.VaccinationCenterRepository;
@@ -35,5 +36,15 @@ public class VaccinationCenterService {
     }
     public void deleteById(int id) {
         // Implement the logic to delete a center by ID
+    }
+    public void deleteCenterById(Integer id) throws CenterNotFoundException{
+        System.out.println("Inside deleteCenterById");
+        Optional<VaccinationCenter> center = centerRepository.findById(id);
+
+        if(center.isPresent()) centerRepository.deleteById(id);
+        else {
+        System.out.println("Center not found");
+        throw new CenterNotFoundException();
+        }
     }
 }
