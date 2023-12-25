@@ -38,7 +38,7 @@ public class VaccinationCenterController {
         return ResponseEntity.ok(CenterService.findAllById(id));
     }
 
-    @PostMapping(path = "api/centers/add")
+    @PostMapping(path = "api/superadmin/centers/add")
     public ResponseEntity<VaccinationCenter> addCenter(@RequestBody VaccinationCenter center){
         int idFromJson = center.getId();
         VaccinationCenter savedCenter = CenterService.addCenter(center);
@@ -52,7 +52,7 @@ public class VaccinationCenterController {
     public void setCenterService(VaccinationCenterService centerService) {
         CenterService = centerService;
     }
-        @DeleteMapping("api/center/deletion/{id}")
+        @DeleteMapping("api/superadmin/center/deletion/{id}")
     public ResponseEntity<String> deleteCenter(@PathVariable Integer id) {
         System.out.println("Inside deleteCenterById Controller");
         try {

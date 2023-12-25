@@ -1,5 +1,9 @@
 package org.polytech.covid.config;
 
+import static org.springframework.security.config.Customizer.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,12 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
-
-import org.slf4j.Logger;
-
-import org.slf4j.LoggerFactory;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -25,6 +23,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
         http
+        .securityMatcher("/api/**").authorizeHttpRequests((auth) -> auth
+            .requestMatchers("/api/superadmin/**").hasAnyAuthority("ROLE_SUPERADMIN")
+            .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_SUPERADMIN", "ROLE_ADMIN")
+            .requestMatchers("/api/user/**").hasAnyAuthority("ROLE_SUPERADMIN", "ROLE_ADMIN", "ROLE_USER")
+            .requestMatchers("/api/public/**").permitAll())
         .authorizeHttpRequests((authz) -> authz.anyRequest().authenticated())
         .httpBasic(withDefaults())
                 .cors(withDefaults())

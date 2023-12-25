@@ -1,13 +1,12 @@
 package org.polytech.covid.service;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.polytech.covid.entity.CustomUserDetails;
 import org.polytech.covid.entity.Utilisateur;
 import org.polytech.covid.repository.UtilisateurRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,31 +31,40 @@ public class UtilisateurService implements UserDetailsService {
      */
     @PostConstruct
     public void createUserDefault() {
-        log.info("Creation du user test");
+        log.info("Creation du superadmin par défaut");
         // en base 64 : dXNlcjpwYXNzd29yZA==
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setLogin("user");
         utilisateur.setPassword(passwordEncoder.encode("password"));
+        utilisateur.setRole(Role.SUPERADMIN);
+        utilisateur.setCenterId(0L);
         this.utilisateurRepository.save(utilisateur);
     }
 
     @Override
-    public UserDetails loadUserByUsername(final String login)
-            throws UsernameNotFoundException {
-        log.info("recuperation de {}", login);
+    public UserDetails loadUserByUsername(final String login) throws UsernameNotFoundException {
+        log.info("Recuperation de {}", login);
 
         Optional<Utilisateur> optionalUtilisateur = utilisateurRepository.findByLogin(login);
         if (optionalUtilisateur.isPresent()) {
             Utilisateur utilisateur = optionalUtilisateur.get();
-            return new User(utilisateur.getLogin(), utilisateur.getPassword(), List.of());
+            return new CustomUserDetails(utilisateur);
         } else {
-            throw new UsernameNotFoundException("L'utilisateur" + login + " n'existe pas");
+            throw new UsernameNotFoundException("L'utilisateur " + login + " n'existe pas");
         }
-
     }
     public Utilisateur createUser(Utilisateur utilisateur) {
         utilisateur.setLogin(utilisateur.getLogin());
+        utilisateur.setCenterId(utilisateur.getCenterId());
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        utilisateur.setRole(Role.USER);
+        return utilisateurRepository.save(utilisateur);
+    }
+        public Utilisateur createAdmin(Utilisateur utilisateur) {
+        utilisateur.setLogin(utilisateur.getLogin());
+        utilisateur.setCenterId(utilisateur.getCenterId());
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        utilisateur.setRole(Role.ADMIN);
         return utilisateurRepository.save(utilisateur);
     }
 }
