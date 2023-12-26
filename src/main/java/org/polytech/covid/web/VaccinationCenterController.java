@@ -20,19 +20,19 @@ public class VaccinationCenterController {
     @Autowired
     private VaccinationCenterService CenterService;
 
-    @GetMapping(path = "api/centers/city/{city}")
+    @GetMapping(path = "api/public/centers/city/{city}")
     public ResponseEntity<List<VaccinationCenter>> findAllByCity(@PathVariable String city){
 
         return ResponseEntity.ok(CenterService.findAllByCity(city));
     }
 
-    @GetMapping(path = "api/centers/name/{name}")
+    @GetMapping(path = "api/public/centers/name/{name}")
     public ResponseEntity<List<VaccinationCenter>> findAllByName(@PathVariable String name){
 
         return ResponseEntity.ok(CenterService.findAllByName(name));
     }
 
-    @GetMapping(path = "api/centers/id/{id}")
+    @GetMapping(path = "api/public/centers/id/{id}")
     public ResponseEntity<List<VaccinationCenter>> findAllById(@PathVariable int id){
 
         return ResponseEntity.ok(CenterService.findAllById(id));
