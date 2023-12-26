@@ -1,4 +1,4 @@
-DELETE http://localhost:8080/api/center/Nancy
+DELETE http://localhost:8080/api/public/center/Nancy
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 Accept: application/json
 
