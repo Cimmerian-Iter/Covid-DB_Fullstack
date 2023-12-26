@@ -23,8 +23,11 @@ public class VaccinationCenterService {
         return centerRepository.findAllByName(CenterName);
     }
 
-        public List<VaccinationCenter> findAllById(int CenterId){
+    public List<VaccinationCenter> findAllById(int CenterId){
         return centerRepository.findAllById(CenterId);
+    }
+    public List<VaccinationCenter> findAll(){
+        return centerRepository.findAll();
     }
     public VaccinationCenter addCenter(VaccinationCenter center){
         return centerRepository.save(center);

@@ -5,7 +5,7 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 Content-Type: application/json
 
 {
-"address": "63 rue des potiers2",
+"address": "63 rue des potiers3",
 "city": "Nancy",
-"name": "Dupond2"
+"name": "Dupond3"
 }

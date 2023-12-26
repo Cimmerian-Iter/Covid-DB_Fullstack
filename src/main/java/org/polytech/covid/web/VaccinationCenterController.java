@@ -38,6 +38,14 @@ public class VaccinationCenterController {
         return ResponseEntity.ok(CenterService.findAllById(id));
     }
 
+        @GetMapping(path = "api/public/centers/all/{id}")
+    public ResponseEntity<List<VaccinationCenter>> findAll(@PathVariable int id){
+
+        return ResponseEntity.ok(CenterService.findAll());
+    }
+
+
+
     @PostMapping(path = "api/superadmin/centers/add")
     public ResponseEntity<VaccinationCenter> addCenter(@RequestBody VaccinationCenter center){
         int idFromJson = center.getId();
