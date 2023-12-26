@@ -1,11 +1,11 @@
 @name=Add Vaccination Center
 
-POST http://localhost:8080/api/public/centers/add
-Authorization: Basic YWRtaW4yOmFkbWluMg==
+POST http://localhost:8080/api/superadmin/centers/add
+Authorization: Basic dXNlcjpwYXNzd29yZA==
 Content-Type: application/json
 
 {
-"address": "63 rue des potiers",
+"address": "63 rue des potiers2",
 "city": "Nancy",
-"name": "Dupond"
+"name": "Dupond2"
 }
