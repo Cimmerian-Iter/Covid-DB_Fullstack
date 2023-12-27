@@ -38,7 +38,6 @@ public class VaccinationCenterService {
         return centerRepository.existsByName(name);
     }
     public void deleteById(int id) {
-        // Implement the logic to delete a center by ID
     }
     public void deleteCenterById(Integer id) throws CenterNotFoundException{
         System.out.println("Inside deleteCenterById");

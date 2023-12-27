@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/public/centers/city/Nancy
+GET http://localhost:8080/api/public/centers/all/1
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 Accept: application/json
 

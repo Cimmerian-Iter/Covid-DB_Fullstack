@@ -25,10 +25,8 @@ public class UtilisateurController {
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
 
-            // Assuming you have a method like getCenterId() in your UserDetails implementation
             Long adminCenterId = ((CustomUserDetails) userDetails).getCenterId();
 
-             // Now, you can use adminCenterId to set the centerId for the new user
             utilisateur.setCenterId(adminCenterId);
 
             Utilisateur createdUser = utilisateurService.createUser(utilisateur);

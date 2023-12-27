@@ -1,0 +1,14 @@
+@name=Add Vaccination Center
+
+POST http://localhost:8080/api/public/rendezvous/create
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+"email": "jesuismalade@soignezmoi.vite",
+"phone": "0383666369",
+"name": "Dupond2",
+"surname": "Mikasa2",
+"centerId": 7,
+"date": "2021-05-01"
+}
