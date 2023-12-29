@@ -7,6 +7,7 @@ import org.polytech.covid.entity.Utilisateur;
 import org.polytech.covid.repository.UtilisateurRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -53,6 +54,43 @@ public class UtilisateurService implements UserDetailsService {
             throw new UsernameNotFoundException("L'utilisateur " + login + " n'existe pas");
         }
     }
+
+    public Role getUserRoleByLogin(String login, String password) {
+        Optional<Utilisateur> optionalUtilisateur = utilisateurRepository.findByLogin(login);
+
+        if (optionalUtilisateur.isPresent()) {
+            Utilisateur utilisateur = optionalUtilisateur.get();
+
+            // Check if the password is correct
+            if (passwordEncoder.matches(password, utilisateur.getPassword())) {
+                return utilisateur.getRole();
+            } else {
+                throw new BadCredentialsException("Mot de passe incorrect");
+            }
+        } else {
+            throw new UsernameNotFoundException("L'utilisateur " + login + " n'existe pas");
+        }
+    }
+    public Utilisateur updateUsernameOrPassword(long userId, String newLogin, String newPassword) {
+        Utilisateur user = utilisateurRepository.findById(userId).orElse(null);
+
+        if (user != null) {
+            // Update username if provided
+            if (newLogin != null && !newLogin.isEmpty()) {
+                user.setLogin(newLogin);
+            }
+
+            // Update password if provided
+            if (newPassword != null && !newPassword.isEmpty()) {
+                user.setPassword(passwordEncoder.encode(newPassword));
+            }
+
+            return utilisateurRepository.save(user);
+        }
+
+        return null;
+    }
+
     public Utilisateur createUser(Utilisateur utilisateur) {
         utilisateur.setLogin(utilisateur.getLogin());
         utilisateur.setCenterId(utilisateur.getCenterId());
@@ -65,6 +103,13 @@ public class UtilisateurService implements UserDetailsService {
         utilisateur.setCenterId(utilisateur.getCenterId());
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateur.setRole(Role.ADMIN);
+        return utilisateurRepository.save(utilisateur);
+    }
+            public Utilisateur createSuperAdmin(Utilisateur utilisateur) {
+        utilisateur.setLogin(utilisateur.getLogin());
+        utilisateur.setCenterId(utilisateur.getCenterId());
+        utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+        utilisateur.setRole(Role.SUPERADMIN);
         return utilisateurRepository.save(utilisateur);
     }
 }

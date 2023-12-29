@@ -1,0 +1,9 @@
+@name=Add Vaccination Center
+
+POST http://localhost:8080/api/public/getRole
+Content-Type: application/json
+
+{
+"login": "medecin1",
+"password": "medecin2"
+}
