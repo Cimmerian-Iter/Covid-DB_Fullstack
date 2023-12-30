@@ -1,0 +1,7 @@
+@name=Add Vaccination Center
+
+GET http://localhost:8080/api/superadmin/getAllAdminUsers
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+

@@ -1,0 +1,7 @@
+@name=Add Vaccination Center
+
+GET http://localhost:8080/api/user/rendezvous/byName/Dupond2
+Authorization: Basic bWVkZWNpbjE6bWVkZWNpbjI=
+Content-Type: application/json
+
+

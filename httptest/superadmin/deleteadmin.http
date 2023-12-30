@@ -1,0 +1,7 @@
+@name=Add Vaccination Center
+
+DELETE http://localhost:8080/api/superadmin/deleteUser/2
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+

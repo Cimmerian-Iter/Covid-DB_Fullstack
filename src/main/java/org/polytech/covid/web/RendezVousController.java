@@ -69,4 +69,5 @@ public class RendezVousController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
+
 }

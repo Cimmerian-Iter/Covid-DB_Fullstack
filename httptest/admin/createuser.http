@@ -5,7 +5,7 @@ Authorization: Basic YWRtaW46YWRtaW4=
 Content-Type: application/json
 
 {
-"login": "medecin1",
+"login": "medecin0",
 "password": "medecin2",
 "centerId": "2"
 }

@@ -1,5 +1,6 @@
 package org.polytech.covid.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.polytech.covid.entity.CustomUserDetails;
@@ -90,6 +91,22 @@ public class UtilisateurService implements UserDetailsService {
 
         return null;
     }
+    public Utilisateur updateAuthorizedUser(long userId, String newLogin, String newPassword, long centerId) {
+        Utilisateur user = utilisateurRepository.findById(userId).orElse(null);
+
+        if (user != null && user.getRole() == Role.USER && user.getCenterId() == centerId) {
+            if (newLogin != null && !newLogin.isEmpty()) {
+                user.setLogin(newLogin);
+            }
+            if (newPassword != null && !newPassword.isEmpty()) {
+                user.setPassword(passwordEncoder.encode(newPassword));
+            }
+
+            return utilisateurRepository.save(user);
+        }
+
+        return null;
+    }
 
     public Utilisateur createUser(Utilisateur utilisateur) {
         utilisateur.setLogin(utilisateur.getLogin());
@@ -111,5 +128,14 @@ public class UtilisateurService implements UserDetailsService {
         utilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
         utilisateur.setRole(Role.SUPERADMIN);
         return utilisateurRepository.save(utilisateur);
+    }
+    public List<Utilisateur> getAllAdminUsers() {
+        return utilisateurRepository.findByRoleIn(List.of(Role.ADMIN));
+    }
+    public void deleteUserById(long userId) {
+        utilisateurRepository.deleteById(userId);
+    }
+    public List<Utilisateur> getAllUsersByCenterId(long centerId) {
+        return utilisateurRepository.findByRoleAndCenterId(Role.USER, centerId);
     }
 }

@@ -60,7 +60,7 @@ public class VaccinationCenterController {
     public void setCenterService(VaccinationCenterService centerService) {
         CenterService = centerService;
     }
-        @DeleteMapping("api/superadmin/center/deletion/{id}")
+    @DeleteMapping("api/superadmin/center/deletion/{id}")
     public ResponseEntity<String> deleteCenter(@PathVariable Integer id) {
         System.out.println("Inside deleteCenterById Controller");
         try {

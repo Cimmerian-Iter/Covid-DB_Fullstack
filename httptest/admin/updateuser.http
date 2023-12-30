@@ -1,0 +1,10 @@
+@name=Add Vaccination Center
+
+PUT http://localhost:8080/api/admin/updateAuthorizedUser/5
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Type: application/json
+
+{
+"login": "medecin0",
+"password": "medecin5"
+}

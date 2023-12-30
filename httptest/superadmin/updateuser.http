@@ -1,11 +1,11 @@
 @name=Add Vaccination Center
 
-POST http://localhost:8080/api/superadmin/create
+PUT http://localhost:8080/api/superadmin/updateUser/3
 Authorization: Basic dXNlcjpwYXNzd29yZA==
 Content-Type: application/json
 
 {
-"login": "admin",
+"login": "admin2",
 "password": "admin",
 "centerId": "1"
 }
