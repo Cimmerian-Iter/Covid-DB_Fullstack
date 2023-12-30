@@ -19,6 +19,7 @@ public class RendezVous {
     private String name;
     private String surname;
     private LocalDate date;
+    private int vaccination;
 
     @Column(name = "center_id")
     private int centerId;
@@ -26,13 +27,14 @@ public class RendezVous {
     public RendezVous() {
     }
 
-    public RendezVous(String email, String phone, String name, String surname, LocalDate date, int centerId) {
+    public RendezVous(String email, String phone, String name, String surname, LocalDate date, int centerId, int vaccination) {
         this.email = email;
         this.phone = phone;
         this.name = name;
         this.surname = surname;
         this.date = date;
         this.centerId = centerId;
+        this.vaccination = vaccination;
     }
 
     public int getId() {
@@ -89,5 +91,12 @@ public class RendezVous {
 
     public void setCenterId(int centerId) {
         this.centerId = centerId;
+    }
+    public int getVaccination() {
+        return vaccination;
+    }
+
+    public void setVaccination(int vaccination) {
+        this.vaccination = vaccination;
     }
 }

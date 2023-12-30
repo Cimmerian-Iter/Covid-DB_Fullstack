@@ -47,8 +47,27 @@ public class RendezVousService {
 
         return null; 
     }
+    public List<RendezVous> getAllRendezvousByName(String name) {
+        return rendezvousRepository.findByName(name);
+    }
+
+    public List<RendezVous> getAllRendezvousByCenterId(int centerId) {
+        return rendezvousRepository.findByCenterId(centerId);
+    }
 
     public void deleteRendezvous(int id) {
         rendezvousRepository.deleteById(id);
     }
+
+    public RendezVous markAsVaccinated(int id) {
+        RendezVous rendezvous = rendezvousRepository.findById(id).orElse(null);
+
+        if (rendezvous != null) {
+            rendezvous.setVaccination(1);
+            return rendezvousRepository.save(rendezvous);
+        }
+
+        return null;
+    }
 }
+

@@ -17,6 +17,7 @@ public interface RendezVousRepository extends JpaRepository<RendezVous, Integer>
     void deleteById(int id);
 
     List<RendezVous> findByCenterId(int centerId);
+    
 
     Optional<RendezVous> findByEmail(String email);
 }

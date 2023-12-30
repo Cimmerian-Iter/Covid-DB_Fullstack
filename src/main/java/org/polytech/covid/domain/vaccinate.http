@@ -1,0 +1,7 @@
+@name=Add Vaccination Center
+
+PUT http://localhost:8080/api/user/rendezvous/vaccinate/2
+Authorization: Basic bWVkZWNpbjE6bWVkZWNpbjI=
+Content-Type: application/json
+
+
