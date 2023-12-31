@@ -1,6 +1,6 @@
 # Covid-DB_Fullstack
 
-##Lancer le projet
+## Lancer le projet
 
 Cloner le github localement et l'importer sur visual studio code.
 
@@ -13,6 +13,8 @@ Le site sera accessible a l'addresse http://localhost:8001/
 ## Fonctionalités
 
 # Système de Gestion des Centres de Vaccination
+
+Tout les .http d'example sont dans le dossier httptest.
 
 ## Accès Public
 
