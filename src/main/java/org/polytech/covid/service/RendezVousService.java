@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class RendezVousService {
     private final RendezVousRepository rendezvousRepository;
+    //private final MeterRegistry meterRegistry;
+    
 
     @Autowired
     public RendezVousService(RendezVousRepository rendezvousRepository) {
         this.rendezvousRepository = rendezvousRepository;
+        //this.meterRegistry = meterRegistry; marche pas
     }
 
     public List<RendezVous> getAllRendezvous() {
@@ -27,6 +30,12 @@ public class RendezVousService {
     public RendezVous createRendezvous(RendezVous rendezvous) {
 
         System.out.println("CenterId: " + rendezvous.getCenterId());
+        /* 
+        Counter.builder("rendezvous.created")
+               .description("Count of created rendezvous")
+               .tag("centerId", String.valueOf(rendezvous.getCenterId()))
+               .register(meterRegistry)
+               .increment();*/
         return rendezvousRepository.save(rendezvous);
     }
 

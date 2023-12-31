@@ -58,11 +58,10 @@ public class UtilisateurService implements UserDetailsService {
 
     public Role getUserRoleByLogin(String login, String password) {
         Optional<Utilisateur> optionalUtilisateur = utilisateurRepository.findByLogin(login);
-
+        // On verifie que l'utilisateur existe
         if (optionalUtilisateur.isPresent()) {
             Utilisateur utilisateur = optionalUtilisateur.get();
-
-            // Check if the password is correct
+            // On verifie que le mot de passe correspond
             if (passwordEncoder.matches(password, utilisateur.getPassword())) {
                 return utilisateur.getRole();
             } else {
@@ -76,12 +75,10 @@ public class UtilisateurService implements UserDetailsService {
         Utilisateur user = utilisateurRepository.findById(userId).orElse(null);
 
         if (user != null) {
-            // Update username if provided
             if (newLogin != null && !newLogin.isEmpty()) {
                 user.setLogin(newLogin);
             }
-
-            // Update password if provided
+            
             if (newPassword != null && !newPassword.isEmpty()) {
                 user.setPassword(passwordEncoder.encode(newPassword));
             }
@@ -93,7 +90,8 @@ public class UtilisateurService implements UserDetailsService {
     }
     public Utilisateur updateAuthorizedUser(long userId, String newLogin, String newPassword, long centerId) {
         Utilisateur user = utilisateurRepository.findById(userId).orElse(null);
-
+        
+        //On cherche a verifier si l'utilisateur existe et si le role correspond et si il est bien affecté au centre donné
         if (user != null && user.getRole() == Role.USER && user.getCenterId() == centerId) {
             if (newLogin != null && !newLogin.isEmpty()) {
                 user.setLogin(newLogin);

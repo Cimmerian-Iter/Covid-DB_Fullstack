@@ -58,7 +58,7 @@ public class RendezVousController {
 
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
-
+            // On créera l'utilisateur dans le centre de l'admin qui le crée, en extrayant le centre_id de son authentification
             Long adminCenterIdLong = ((CustomUserDetails) userDetails).getCenterId();
 
             // Conversion parce que

@@ -33,7 +33,7 @@ public class UtilisateurController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
-
+            // On créera l'utilisateur dans le centre de l'admin qui le crée
             Long adminCenterId = ((CustomUserDetails) userDetails).getCenterId();
 
             utilisateur.setCenterId(adminCenterId);
@@ -63,7 +63,7 @@ public class UtilisateurController {
 
     try {
         Role role = utilisateurService.getUserRoleByLogin(login, password);
-
+        // On renvoie un JSON pour pouvoir le lire facilement dans le front
         String jsonResponse = "{\"role\":\"" + role.toString() + "\"}";
         return ResponseEntity.ok(jsonResponse);
     } catch (UsernameNotFoundException e) {
@@ -96,11 +96,11 @@ public class UtilisateurController {
     @GetMapping("/api/admin/getAllUsersByCenterId")
     public ResponseEntity<List<Utilisateur>> getAllUsersByCenterId() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        // On vérifie que l'utilisateur est bien authentifié
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
             long centerId = ((CustomUserDetails) userDetails).getCenterId();
-
+            // On récupère tous les utilisateurs du centre de l'admin, en extrayant sont centre_id de son authentification
             List<Utilisateur> users = utilisateurService.getAllUsersByCenterId(centerId);
             return new ResponseEntity<>(users, HttpStatus.OK);
         } else {
@@ -114,18 +114,18 @@ public class UtilisateurController {
             Authentication authentication) {
 
         Object principal = authentication.getPrincipal();
-
+        // On vérifie que l'utilisateur est bien authentifié
         if (principal instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) principal;
             long centerId = ((CustomUserDetails) userDetails).getCenterId();
-
+            // On vérifie que l'utilisateur est bien un admin
             Utilisateur updated = utilisateurService.updateAuthorizedUser(
                     id,
                     updatedUser.getLogin(),
                     updatedUser.getPassword(),
                     centerId
             );
-
+            // 
             if (updated != null) {
                 return new ResponseEntity<>(updated, HttpStatus.OK);
             } else {

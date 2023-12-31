@@ -1,7 +1,7 @@
 @name=Add Vaccination Center
 
 POST http://localhost:8080/api/superadmin/create
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Basic YWRtaW4yOmFkbWluMg==
 Content-Type: application/json
 
 {
