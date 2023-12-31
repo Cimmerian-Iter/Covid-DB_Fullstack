@@ -27,7 +27,8 @@ public class RendezVousController {
     public ResponseEntity<String> createRendezvous(@RequestBody RendezVous rendezvous) {
         rendezvousService.createRendezvous(rendezvous);
 
-        return ResponseEntity.ok("Rendezvous created successfully!");
+        String jsonResponse = "{\"message\":\"Rendezvous created successfully!\"}";
+        return ResponseEntity.ok(jsonResponse);
     }
 
     @DeleteMapping("/api/admin/rendezvous/delete/{id}")
