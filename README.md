@@ -10,6 +10,8 @@ Lancer le .jar
 
 Le site sera accessible a l'addresse http://localhost:8001/
 
+Pour avoir l'interface Front et communiquer avec le backend, voici le projet à utiliser : Lien vers la partie frontend du projet : https://github.com/numaquentin/Covid-Fullstack-Frontend
+
 ## Fonctionalités
 
 # Système de Gestion des Centres de Vaccination
