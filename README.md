@@ -4,15 +4,21 @@
 
 Cloner le github localement et l'importer sur visual studio code.
 
-Lancer la compilation du projet (soit à l'aide de l'extension java de VSCode, soit dans le menu gradle, en utilisant l'option build)
-Ou
-Lancer le .jar 
+Lancer la compilation du projet (soit à l'aide de l'extension java de VSCode, soit dans le menu gradle, en utilisant l'option build, et bootrun)
 
-Le site sera accessible a l'addresse http://localhost:8001/
+Nécessite PgAdmin4 et postrgres d'installé, et ayant une base covid-db déja crée. Veuillez modifier le mot de passe de la base de données dans l'application.yaml
+
+Le site sera accessible a l'addresse http://localhost:8080/
 
 Pour avoir l'interface Front et communiquer avec le backend, voici le projet à utiliser : Lien vers la partie frontend du projet : https://github.com/numaquentin/Covid-Fullstack-Frontend
 
 ## Fonctionalités
+
+- Test unitaire (3)
+- Test d'intégration (1)
+
+Authentification par Basic.
+Check de sécurité pour qu'un admin crée des medecins uniquement dans son centre, et qu'un medecin ne puisse voir que les patients de son centre. 
 
 # Système de Gestion des Centres de Vaccination
 
